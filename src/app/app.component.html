@@ -1,0 +1,20 @@
+<ng-container *ngIf="show; else dontShowTpl">
+  <h1>Cars</h1>
+  <ul>
+    <ng-container *ngIf="cars.length; else noCarsTpl">
+      <li *ngFor="let car of cars" [style.color]="car.color">
+        {{ car.name }}
+      </li>
+    </ng-container>
+    <ng-template #noCarsTpl>
+      <h5>No cars!</h5>
+      <button (click)="loadCars()">Load cars</button>
+    </ng-template>
+  </ul>
+</ng-container>
+
+<ng-template #dontShowTpl>
+  <h1>Nothing to see here!</h1>
+</ng-template>
+
+<button (click)="show = !show">Toggle</button>
